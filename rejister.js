@@ -18,7 +18,7 @@ let username = document.querySelector('#name'),
     if(!emailcheck) return error_msg('error','Invalid email');
     if(pass.value.trim()==='') return error_msg('error', 'Please Enter password');  
     if(conpass.value !== pass.value) return error_msg('error', "Password does not match");
-    if(!checkbox.checked) return error_msg('error','Please acept the terms and conditions');
+    if(!checkbox.checked) return error_msg('error','Please accept the terms and conditions');
 
     email_checking();
     
@@ -36,7 +36,7 @@ function useradd(){
     localStorage.setItem('user',JSON.stringify(local));
     form.reset();
     error_msg('success','User added successfully');
-    setTimeout(()=>{window.location.href='dashboard.html'},2000);
+    setTimeout(()=>{window.location.href='index.html'},2000);
 }
 
 function error_msg(clas,content){

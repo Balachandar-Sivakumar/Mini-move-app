@@ -1,13 +1,23 @@
+let show = document.querySelector('.name > span');
+let local = JSON.parse(localStorage.getItem('user')) || [];
+let user = local.find(n => n.status === true); 
+
+if (user) {
+    show.innerHTML = user.name;
+} else {
+    window.location.href = 'index.html';
+}
+
 let movie_list = document.querySelector('.movie-list'),
-      input = document.querySelector('#searchInput');
-   
+      input = document.querySelector('#searchInput'),
+   moviesdata=[];
 function getdatabase(){
-    getrequest = new XMLHttpRequest();
+  let  getrequest = new XMLHttpRequest();
 
     getrequest.open('GET','https://mimic-server-api.vercel.app/movies');
 
     getrequest.onload = ()=>{
-        if(getrequest.status==200) return getdatas(getrequest.response)
+        if(getrequest.status==200) return getdatas(getrequest.response),moviesdata=JSON.parse(getrequest.response);
     }
     getrequest.send();
 }
@@ -34,11 +44,13 @@ getdatabase()
         let datas = JSON.parse(data);
        
         datas.forEach(ele => {
-            ele.genre_ids.forEach(n=>{
-                genre+=genredetail[n]+' ';
-            })
+            if(ele.genre_ids){
+                ele.genre_ids.forEach(n=>{
+                    genre+=genredetail[n]+' ';
+                })
+            }
             movie_list.innerHTML+=` <div class="movie-card" data-title="Inception">
-                <img src="${ele.poster_path}" class="movie-poster">
+                <img src="${ele.poster_path ? ele.poster_path : 'Image not available'}" class="movie-poster">
                 <label class="movie-title">Title : <p>${ele.original_title}</p></label>
                 <label class="language">Language : <p>${ele.original_language=='ta' ? 'Tamil' :'English'}</p></label>
                  <label class="genre">Genre : <p>${genre}</p></label>
@@ -68,3 +80,4 @@ getdatabase()
       }
    })
  }   
+

@@ -16,6 +16,8 @@
                 <input type="text" id="searchInput" placeholder="Search for a movie..." oninput="searching()">
                 <button class="search-button" onclick="searching()">Search</button>
             </div>
+
+            <p class="name">HELLO, <span></span> <button class="logout">Log out</button></p>
         </header>
 
         <div class="movie-list"></div>
@@ -35,7 +37,6 @@
         color: #fff;
         display: flex;
         justify-content: center;
-        align-items: center;
         min-height: 100vh;
     }
     
@@ -49,6 +50,7 @@
     .header {
         text-align: center;
         margin-bottom: 30px;
+        position: relative;
     }
     
     .header h1 {
@@ -167,6 +169,49 @@
     .fa-exclamation-triangle,.fa-ban{
         color: red;
     }
+  
+
+    /* General Button Styles */
+button {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+button:hover {
+    background: linear-gradient(45deg, #0056b3, #003d80);
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Click Effect */
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled Button */
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.name{
+        position: absolute;
+        right:0;
+        top: 50%;
+        display: inline;
+    }
+
 
 </style>
 
