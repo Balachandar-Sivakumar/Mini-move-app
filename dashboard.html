@@ -205,12 +205,61 @@ button:disabled {
     cursor: not-allowed;
     box-shadow: none;
 }
-.name{
-        position: absolute;
-        right:0;
+
+
+
+.name {
+    position: absolute;
+        right:-3rem;
         top: 50%;
         display: inline;
-    }
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Username Span */
+.name span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Logout Button */
+.logout {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.logout:hover {
+    background: linear-gradient(45deg, #ff3a1b, #ff2255);
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Click Effect */
+.logout:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 
 
 </style>
