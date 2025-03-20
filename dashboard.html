@@ -23,158 +23,198 @@
         <div class="movie-list"></div>
     </div>
 
-  
+    <div class="notification">
+        <p style="text-align: center;"></p>
+    </div>
 <style>
 
-   *{
+   /* Global Reset */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   }
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #1a1a1a;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        min-height: 100vh;
-    }
-    
-    .movie-container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 20px auto;
-    }
-    section{
-        min-height: 100vh;
-        margin: 2rem 0;
-    }
-   
-    .header {
-        text-align: center;
-        margin-bottom: 30px;
-        position: relative;
-    }
-    
-    .header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        color: #e50914; /* Netflix red */
-    }
-    
-    .search-bar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .search-bar input {
-        width: 300px;
-        padding: 10px;
-        border: 2px solid #333;
-        border-radius: 5px;
-        font-size: 1rem;
-        background-color: #333;
-        color: #fff;
-        outline: none;
-    }
-    
-    .search-bar input:focus {
-        border-color: #e50914;
-    }
-    
-    .search-bar button {
-        padding: 10px 20px;
-        background-color: #e50914;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    .search-bar button:hover {
-        background-color: #b20710;
-    }
-    
-    /* Movie List */
-    .movie-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(30%, 2fr));
-        gap: 20px;
-        width: 100%;
-    }
-    
-    .movie-card {
-        background-color: #333;
-        border-radius: 10px;
-        width: 100%;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-        padding: 1rem;
+}
 
-    }
-    
-    .movie-card:hover {
-        transform: scale(1.05);
-    }
-    
-    .movie-poster {
-        width: 100%;
-        height: 100%;
-        height: 500px;
-    }
-    
-    label {
-        font-size: 1.3rem;
-        padding: .5rem 0;
-        color: #fff;
-        display: block;
-        font-weight: 700;
-    }
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
 
-    label p{
-        display: inline;
-    }
+/* Container */
+.movie-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
 
-    
-    .movie-description {
-        font-size: 1rem;
-        color: #ccc;
-    }
-    
-    .select-button {
-       
-        width: 100%;
-        padding: 10px;
-        background-color: #e50914;
-        color: #fff;
-        border: none;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    .select-button:hover {
-        background-color: #b20710;
-    }
+section {
+    min-height: 100vh;
+    margin: 2rem 0;
+}
 
-    i{
-        color: rgb(243, 159, 3);
-    }
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
 
-    .fa-check,.fa-user-plus{
-        color: green;
-    }
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #e50914; /* Netflix red */
+}
 
-    .fa-exclamation-triangle,.fa-ban{
-        color: red;
-    }
-  
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 
-    /* General Button Styles */
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+    border-color: #e50914;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+    background-color: #b20710;
+}
+
+/* Movie List */
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* Movie Card */
+.movie-card {
+    background-color: #333;
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    padding: 1rem;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+/* Movie Poster */
+.movie-poster {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Movie Description */
+.movie-description {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Labels */
+label {
+    font-size: 1.3rem;
+    padding: 0.5rem 0;
+    color: #fff;
+    display: block;
+    font-weight: 700;
+}
+
+/* Select Button */
+.select-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.select-button:hover {
+    background-color: #b20710;
+}
+
+/* Icons */
+i {
+    color: rgb(243, 159, 3);
+}
+
+.fa-check,
+.fa-user-plus {
+    color: green;
+}
+
+.fa-exclamation-triangle,
+.fa-ban {
+    color: red;
+}
+
+/* Notification */
+.notification {
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+    position: absolute;
+    top: -500px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.success {
+    top: 1.5rem;
+    background-color: white;
+    border: 1px solid #45a049;
+    color: green;
+}
+
+.error {
+    top: 1.5rem;
+    background-color: white;
+    color: red;
+    border: 1px solid #e53935;
+}
+
+/* Buttons */
 button {
     background: linear-gradient(45deg, #007bff, #0056b3);
     color: white;
@@ -189,14 +229,14 @@ button {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover Effect */
+/* Button Hover Effect */
 button:hover {
     background: linear-gradient(45deg, #0056b3, #003d80);
     transform: translateY(-2px);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Active Click Effect */
+/* Active Button Effect */
 button:active {
     transform: scale(0.98);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -209,13 +249,12 @@ button:disabled {
     box-shadow: none;
 }
 
-
-
+/* Username Section */
 .name {
     position: absolute;
-        right:-3rem;
-        top: 50%;
-        display: inline;
+    right: -3rem;
+    top: 50%;
+    display: inline;
     font-size: 18px;
     font-weight: bold;
     color: #333;
@@ -250,18 +289,19 @@ button:disabled {
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover Effect */
+/* Logout Hover Effect */
 .logout:hover {
     background: linear-gradient(45deg, #ff3a1b, #ff2255);
     transform: translateY(-2px);
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Active Click Effect */
+/* Logout Active Effect */
 .logout:active {
     transform: scale(0.95);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 
 
 

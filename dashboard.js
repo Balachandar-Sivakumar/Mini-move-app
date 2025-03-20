@@ -9,15 +9,15 @@ if (user) {
 }
 
 let movie_list = document.querySelector('.movie-list'),
-      input = document.querySelector('#searchInput'),
-   moviesdata=[];
+      input = document.querySelector('#searchInput');
+
 function getdatabase(){
   let  getrequest = new XMLHttpRequest();
 
     getrequest.open('GET','https://mimic-server-api.vercel.app/movies');
 
     getrequest.onload = ()=>{
-        if(getrequest.status==200) return getdatas(getrequest.response),moviesdata=JSON.parse(getrequest.response);
+        if(getrequest.status==200) return getdatas(getrequest.response);
     }
     getrequest.send();
 }
@@ -69,7 +69,6 @@ getdatabase()
         movie_list.innerHTML='';
    title.forEach(n=>{
       if(n.textContent.toLowerCase().includes(input.value.toLowerCase())){
-        console.log(n.textContent,'bala');
         
         let loadrequest = new XMLHttpRequest()
         loadrequest.open('GET',`https://mimic-server-api.vercel.app/movies?original_title=${n.textContent}`)
@@ -79,5 +78,26 @@ getdatabase()
         loadrequest.send()
       }
    })
- }   
+ }  
+ 
+ const logout_btn = document.querySelector('.logout');
 
+ logout_btn.addEventListener('click',()=>{
+    local= local.map(n => n.status === true ? {...n,status : false}: n);
+    localStorage.setItem('user',JSON.stringify(local));
+    error_msg('success','logout successfull')
+    setTimeout(()=>{window.location.href='index.html'},1000)
+ })
+
+setTimeout(()=>{error_msg('success','loggged in successfully'),500})
+
+let err = document.querySelector('.notification');
+
+ function error_msg(clas,content){
+    err.classList.add(clas);
+    err.innerHTML=content;
+    setTimeout(()=>{
+        err.classList.remove(clas);
+        err.innerHTML=''
+    },3000)
+}

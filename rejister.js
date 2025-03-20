@@ -8,7 +8,10 @@ let username = document.querySelector('#name'),
  let err = document.querySelector('.notification'),
     local = JSON.parse(localStorage.getItem('user')) || [],
     form = document.querySelector('form'),
-    checkbox = document.getElementById('terms');
+    checkbox = document.getElementById('terms'),
+
+    statuscheck = local.find(n=> n.status == true );
+     if(statuscheck) window.location.href='dashboard.html'
  
  sumit_btn.addEventListener('click',(event)=>{
     event.preventDefault();
