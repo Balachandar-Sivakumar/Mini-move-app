@@ -45,16 +45,13 @@ getdatabase()
         let datas = data;
        
         datas.forEach(ele => {
-            if(!ele.genre_ids) return ;
-                ele.genre_ids.forEach(n=>{
-                    genre+=genredetail[n]+' ';
-                })
+            let getgerne = ele.genre_ids.map(n=> !n ? '':isNaN(n)?'':genredetail[n]).join(',')
             
             movie_list.innerHTML+=` <div class="movie-card" data-title="Inception">
                 <img src="${ele.poster_path ? ele.poster_path : 'Image not available'}" class="movie-poster">
                 <label class="movie-title">Title : <p>${ele.original_title}</p></label>
                 <label class="language">Language : <p>${ele.original_language=='ta' ? 'Tamil' :'English'}</p></label>
-                 <label class="genre">Genre : <p>${genre}</p></label>
+                 <label class="genre">Genre : <p>${getgerne}</p></label>
                  <label class="release">Release Date : <p>${ele.release_date}</p></label>
                  <label class="rating">Rating : <i class="fa-solid fa-star"></i> ${ele.vote_average}/10</label>
                  <label class="adult">Adult Content : ${ele.adult ==true ? ' <i class="fas fa-exclamation-triangle"> </i>  </i> <i class="fas fa-ban"></i> ' : ' <i class="fas fa-user-plus"> </i> <i class="fa-solid fa-check"></i>'}</label>
