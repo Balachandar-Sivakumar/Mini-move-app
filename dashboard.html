@@ -15,6 +15,7 @@
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Search for a movie..." oninput="searching()">
                 <button class="search-button" onclick="searching()">Search</button>
+                <button onclick="togglebtn()">Add Movie</button>
             </div>
 
             <p class="name">HELLO, <span></span> <button class="logout">Log out</button></p>
@@ -26,6 +27,27 @@
     <div class="notification">
         <p style="text-align: center;"></p>
     </div>
+
+    <form class="movieForm">
+        <i class="fa-solid fa-xmark" onclick="togglebtn()"></i>
+        <h2 style="text-align: center;">Add Movie Details</h2>
+        <label for="original_title">Original Title: <input type="text" id="original_title" name="original_title" ></label>
+        <label for="original_language">Original Language:<input type="text" id="original_language" name="original_language" ></label>
+        <label for="backdrop_path">Backdrop URL:<input type="url" id="backdrop_path" name="backdrop_path" ></label>
+        <label for="genre_ids">Genre IDs (comma-separated): <input type="text" id="genre_ids" name="genre_ids" ></label> 
+        <label for="overview">Overview:</label>
+        <textarea id="overview" name="overview"></textarea>
+        <label for="popularity">Popularity:<input type="number" id="popularity" name="popularity" step="0.001" ></label>
+        <label for="poster_path">Poster URL:<input type="url" id="poster_path" name="poster_path" ></label>
+        <label for="release_date">Release Date:<input type="date" id="release_date" name="release_date" ></label>
+        <label for="title">Title: <input type="text" id="title" name="title"></label>
+        <label for="video">Video Available:<input type="checkbox" id="video" name="video"></label>
+        <label for="adult">Adult: <input type="checkbox" id="adult" name="adult"></label>
+        <label for="vote_average">Vote Average:<input type="number" id="vote_average" name="vote_average" step="0.1"></label>
+        <label for="vote_count">Vote Count:<input type="number" id="vote_count" name="vote_count"></label>
+        <button type="submit" class="submit_button">Submit</button>
+    </form>
+    
 <style>
 
    /* Global Reset */
@@ -117,6 +139,15 @@ section {
     width: 100%;
 }
 
+.fa-xmark{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: red;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
 /* Movie Card */
 .movie-card {
     background-color: #333;
@@ -152,6 +183,10 @@ label {
     color: #fff;
     display: block;
     font-weight: 700;
+}
+
+label p{
+    display: inline;
 }
 
 /* Select Button */
@@ -215,7 +250,7 @@ i {
 }
 
 /* Buttons */
-button {
+.logout {
     background: linear-gradient(45deg, #007bff, #0056b3);
     color: white;
     font-size: 16px;
@@ -230,20 +265,20 @@ button {
 }
 
 /* Button Hover Effect */
-button:hover {
+.logout:hover {
     background: linear-gradient(45deg, #0056b3, #003d80);
     transform: translateY(-2px);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Active Button Effect */
-button:active {
+.logout:active {
     transform: scale(0.98);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Disabled Button */
-button:disabled {
+.logout:disabled {
     background: #ccc;
     cursor: not-allowed;
     box-shadow: none;
@@ -302,7 +337,88 @@ button:disabled {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.movieForm{
+    position: absolute;
+    top: -2000px;  
+    transition: .5s ease;
+}
 
+
+/* General Form Styling */
+form {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+/* Labels */
+form label {
+    display: block;
+    font-size: 1rem;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+/* Inputs and Textareas */
+  form input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Focus Effect */
+input:focus, textarea:focus {
+    border-color: #e50914;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    width: auto;
+    margin-left: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Submit Button */
+form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #e50914, #b20710);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+/* Button Hover Effect */
+form button:hover {
+    background: linear-gradient(45deg, #b20710, #800000);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+
+.getforms {
+    top: 2rem;
+}
 
 
 </style>
