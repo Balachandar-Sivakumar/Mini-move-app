@@ -21,11 +21,9 @@ async function getdatabase(){
  .catch(error=>console.log(error))
 }
 
-
 getdatabase()
-
-    let genre = '',
-        genredetail={
+ 
+    let genredetail={
             28:'Action',
             80:'Crime', 
             53:'Thriller',
@@ -38,8 +36,6 @@ getdatabase()
             10749:'Romance'
         };
    
-
-
   async function getdatas(data){
        try{
         let datas = data;
@@ -58,12 +54,8 @@ getdatabase()
             </div>`
             genre='';
         });
-       }catch(error){
-            console.log(error);
-            
-       }
-        
-    }
+       }catch(error){console.log(error);}
+ }
 
  async function searching(){
     if(input.value.trim()=='') return getdatabase();
@@ -86,7 +78,7 @@ getdatabase()
  const logout_btn = document.querySelector('.logout');
 
  logout_btn.addEventListener('click',()=>{
-    local= local.map(n => n.status === true ? {...n,status : false}: n);
+    local= local.map(n => n.status === true ? {...n,status: false}: n);
     localStorage.setItem('user',JSON.stringify(local));
     error_msg('success','logout successfull')
     setTimeout(()=>{window.location.href='index.html'},1000)
@@ -109,37 +101,35 @@ let data_form = document.querySelector('.movieForm');
 
 function togglebtn(){data_form.classList.toggle('getforms');}
 
-let submitbtn = document.querySelector('.submit_button').addEventListener('click',(event)=>{
+let submitbtn = document.querySelector('.submit_button');
+submitbtn.addEventListener('click',(event)=>{
     event.preventDefault();
     console.log('clicking');
     
     add_data_databse()})
 
 async function add_data_databse(){
-  
     let data = {
-        "adult": data_form.elements['adult'].checked ? true : false,
-        "backdrop_path": data_form.elements['backdrop_path'].value,
-        "genre_ids": [28,80,53],
-        "id": Math.floor(Math.random()*90000 + 10000),
-        "original_language": data_form.elements['original_language'].value.toLowerCase()=='tamil' ? 'ta':'eng',
-        "original_title": data_form.elements['original_title'].value,
-        "overview": data_form.elements['overview'].value ? data_form.elements['overview'].value : '',
-        "popularity": 0.863,
-        "poster_path": data_form.elements['poster_path'].value,
-        "release_date": data_form.elements['release_date'],
-        "title": data_form.elements['title'],
-        "video": data_form.elements['video'].checked ? true:false,
-        "vote_average": data_form.elements['vote_average'],
-        "vote_count": data_form.elements['vote_count']
-    }
+        "adult": data_form.elements['adult'].checked,
+        "backdrop_path": data_form.elements['backdrop_path'].value.trim(),
+        "genre_ids": [28, 80, 53], 
+        "id": Date.now(),
+        "original_language": data_form.elements['original_language'].value.toLowerCase() === 'tamil' ? 'ta' : 'eng',
+        "original_title": data_form.elements['original_title'].value.trim(),
+        "overview": data_form.elements['overview'].value.trim(),
+        "poster_path": data_form.elements['poster_path'].value.trim(),
+        "release_date": data_form.elements['release_date'].value,
+        "video": data_form.elements['video'].checked,
+        "vote_average": parseFloat(data_form.elements['vote_average'].value) || 0,
+        "vote_count": parseInt(data_form.elements['vote_count'].value) || 0
+    };
    await fetch('https://mimic-server-api.vercel.app/movies',{
         method : 'POST',
         headers:{'Content-Type':'application/json'},
         body : JSON.stringify(data)
     })
     .then(res =>res.json())
-    .then(data => console.log(data))
+    .then(res => getdatabase())
     .catch(error => console.log(error))
 }
 
